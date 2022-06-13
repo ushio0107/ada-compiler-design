@@ -1,0 +1,100 @@
+/*-------------------------------------------------*/
+/*                Java Assembly Code               */
+/*-------------------------------------------------*/
+class compFib
+{
+/*  1: { This test program computes the Nth Fibonacci number  */
+/*  2:     using recursion and iteration. }  */
+/*  3:   */
+/*  4: program computeFib  */
+/*  5:   */
+/*  6: -- global variables  */
+/*  7: declare  */
+/*  8:   n: constant := 8;  */
+/*  9:   */
+/*  10: -- iterative function  */
+	method public static int itFibonacci(int)
+	max_stack 15
+	max_locals 15
+	{
+/*  11: procedure itFibonacci (n: integer) return integer  */
+/*  12: declare  */
+/*  13:   Fn: integer;  */
+/*  14:   FNminus1: integer;  */
+/*  15:   temp: integer;  */
+/*  16:   */
+/*  17: begin  */
+		sipush 1
+		istore 1
+/*  18:   Fn := 1;  */
+		sipush 1
+		istore 2
+/*  19:   FNminus1 := 1;  */
+L0:
+		iload 0
+		sipush 2
+		isub
+		ifgt L1
+		iconst_0
+		goto L2
+L1:
+		iconst_1
+L2:
+		ifeq L3
+/*  20:   while (n > 2) loop  */
+/*  21:     begin  */
+		iload 1
+		istore 3
+/*  22:       temp := Fn;  */
+		iload 1
+		iload 2
+		iadd 
+		istore 1
+/*  23:       Fn := Fn + FNminus1;  */
+		iload 3
+		istore 2
+/*  24:       FNminus1 := temp;  */
+		iload 0
+		sipush 1
+		isub 
+		istore 0
+/*  25:       n := n - 1;  */
+/*  26:     end;  */
+		goto L0
+L3:
+/*  27:   end loop;  */
+		iload 1
+		ireturn
+/*  28:   return Fn;  */
+/*  29: end;  */
+		ireturn
+	}
+/*  30: end itFibonacci;  */
+/*  31:   */
+/*  32: -- main program   */
+	method public static void main(java.lang.String[])
+	max_stack 15
+	max_locals 15
+	{
+/*  33: begin  */
+		getstatic java.io.PrintStream java.lang.System.out
+		ldc "N: "
+		invokevirtual void java.io.PrintStream.print(java.lang.String)
+/*  34:   print "N: ";  */
+		getstatic java.io.PrintStream java.lang.System.out
+		sipush 8
+		invokevirtual void java.io.PrintStream.println(int)
+/*  35:   println n;  */
+		getstatic java.io.PrintStream java.lang.System.out
+		ldc "Result of iterative computation:"
+		invokevirtual void java.io.PrintStream.print(java.lang.String)
+/*  36:   print "Result of iterative computation:";  */
+		getstatic java.io.PrintStream java.lang.System.out
+		sipush 8
+		invokestatic int compFib.itFibonacci(int)
+		invokevirtual void java.io.PrintStream.println(int)
+/*  37:   println itFibonacci(n);  */
+/*  38: end;  */
+		return
+	}
+}

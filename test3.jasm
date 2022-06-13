@@ -1,0 +1,230 @@
+/*-------------------------------------------------*/
+/*                Java Assembly Code               */
+/*-------------------------------------------------*/
+class test3
+{
+/*  1: program testProgram  */
+/*  2: declare   */
+	field static int var1 = 0
+/*  3:   var1 : integer := 0;  */
+/*  4:   var2 : constant : integer := 10;  */
+	field static int a = 0
+/*  5:   a := 0;  */
+	field static int a1 = 0
+/*  6:   a1 := 0;  */
+	field static int sum
+/*  7:   sum : integer;  */
+/*  8:   */
+	method public static void main(java.lang.String[])
+	max_stack 15
+	max_locals 15
+	{
+/*  9: begin  */
+		sipush 0
+		putstatic int test3.sum
+/*  10:     sum := 0;  */
+		getstatic java.io.PrintStream java.lang.System.out
+		ldc "while-if function"
+		invokevirtual void java.io.PrintStream.print(java.lang.String)
+/*  11:     print "while-if function";  */
+L0:
+		getstatic int test3.var1
+		sipush 10
+		isub
+		ifle L1
+		iconst_0
+		goto L2
+L1:
+		iconst_1
+L2:
+		ifeq L3
+/*  12:     while(var1 <= var2) loop  */
+/*  13:         begin  */
+		getstatic int test3.var1
+		sipush 10
+		isub
+		ifeq L4
+		iconst_0
+		goto L5
+L4:
+		iconst_1
+L5:
+		ifeq L6
+/*  14:             if(var1 = var2) then  */
+		getstatic java.io.PrintStream java.lang.System.out
+		getstatic int test3.sum
+		invokevirtual void java.io.PrintStream.println(int)
+/*  15:                 println sum;  */
+		goto L7
+L6:
+/*  16:             else  */
+		getstatic int test3.sum
+		getstatic int test3.var1
+		iadd 
+		putstatic int test3.sum
+/*  17:                 sum := sum + var1;  */
+L7:
+/*  18:             end if;  */
+		getstatic int test3.var1
+		sipush 1
+		iadd 
+		putstatic int test3.var1
+/*  19:             var1 := var1 + 1;  */
+/*  20:         end;  */
+		goto L0
+L3:
+/*  21:     end loop;  */
+/*  22:   */
+		sipush 0
+		putstatic int test3.var1
+/*  23:     var1 := 0;  */
+		sipush 0
+		putstatic int test3.sum
+/*  24:     sum := 0;  */
+L8:
+		getstatic int test3.var1
+		sipush 10
+		isub
+		ifle L9
+		iconst_0
+		goto L10
+L9:
+		iconst_1
+L10:
+		ifeq L11
+/*  25:     while(var1 <= var2) loop  */
+/*  26:         begin   */
+		sipush 1
+		putstatic int test3.a
+L12:
+		getstatic int test3.a
+		sipush 5
+		isub
+		ifle L13
+		iconst_0
+		goto L14
+L13:
+		iconst_1
+L14:
+		ifeq L15
+/*  27:             for(a in 1..5) loop  */
+		getstatic java.io.PrintStream java.lang.System.out
+		getstatic int test3.a
+		invokevirtual void java.io.PrintStream.println(int)
+/*  28:                 println a;  */
+		getstatic int test3.a
+		sipush 1
+		iadd
+		putstatic int test3.a
+		goto L12
+L15:
+/*  29:             end loop;  */
+		getstatic int test3.var1
+		sipush 1
+		iadd 
+		putstatic int test3.var1
+/*  30:             var1 := var1 + 1;  */
+		getstatic java.io.PrintStream java.lang.System.out
+		ldc "var1:"
+		invokevirtual void java.io.PrintStream.print(java.lang.String)
+/*  31:             print "var1:";  */
+		getstatic java.io.PrintStream java.lang.System.out
+		getstatic int test3.var1
+		invokevirtual void java.io.PrintStream.println(int)
+/*  32:             println var1;  */
+/*  33:         end;  */
+		goto L8
+L11:
+/*  34:     end loop;  */
+/*  35:   */
+		getstatic int test3.var1
+		getstatic int test3.sum
+		isub
+		iflt L16
+		iconst_0
+		goto L17
+L16:
+		iconst_1
+L17:
+		ifeq L18
+/*  36:     if(var1 < sum) then  */
+/*  37:     begin  */
+		sipush 1
+		putstatic int test3.a1
+L20:
+		getstatic int test3.a1
+		sipush 5
+		isub
+		ifle L21
+		iconst_0
+		goto L22
+L21:
+		iconst_1
+L22:
+		ifeq L23
+/*  38:         for(a1 in 1..5) loop  */
+		getstatic int test3.var1
+		getstatic int test3.a1
+		sipush 2
+		imul 
+		iadd 
+		putstatic int test3.var1
+/*  39:             var1 := var1 + a1 * 2;  */
+		getstatic int test3.a1
+		sipush 1
+		iadd
+		putstatic int test3.a1
+		goto L20
+L23:
+/*  40:         end loop;  */
+		getstatic java.io.PrintStream java.lang.System.out
+		getstatic int test3.var1
+		invokevirtual void java.io.PrintStream.println(int)
+/*  41:         println var1;  */
+/*  42:     end;  */
+		goto L19
+L18:
+/*  43:     else  */
+/*  44:     begin  */
+		sipush 1
+		putstatic int test3.a1
+L24:
+		getstatic int test3.a1
+		sipush 3
+		isub
+		ifle L25
+		iconst_0
+		goto L26
+L25:
+		iconst_1
+L26:
+		ifeq L27
+/*  45:         for(a1 in 1..3) loop  */
+		getstatic int test3.var1
+		getstatic int test3.a1
+		sipush 2
+		imul 
+		iadd 
+		putstatic int test3.var1
+/*  46:             var1 := var1 + a1 * 2;  */
+		getstatic int test3.a1
+		sipush 1
+		iadd
+		putstatic int test3.a1
+		goto L24
+L27:
+/*  47:         end loop;  */
+		getstatic java.io.PrintStream java.lang.System.out
+		getstatic int test3.var1
+		invokevirtual void java.io.PrintStream.println(int)
+/*  48:         println var1;  */
+/*  49:     end;  */
+L19:
+/*  50:     end if;  */
+/*  51:   */
+/*  52: end;  */
+		return
+	}
+}
+/*  53: end testProgram  */
+/*  54:           */

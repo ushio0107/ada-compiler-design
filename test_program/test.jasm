@@ -1,0 +1,465 @@
+/*-------------------------------------------------*/
+/*                Java Assembly Code               */
+/*-------------------------------------------------*/
+class test
+{
+/*  1:{* test Program  */
+/*  2: *  */
+/*  3: *  */
+/*  4: *}  */
+/*  5:program test  */
+/*  6:declare  */
+	field static int a
+/*  7:  a : integer;  */
+	field static int a2 = 3
+/*  8:  a2: integer := 1 + 2;  */
+	field static int b
+/*  9:  b: integer;  */
+/*  10:  const1: constant := 0;  */
+/*  11:  const2: constant: integer := 5;  */
+/*  12:  const3: constant := true;  */
+/*  13:  const4: constant := "test program start";  */
+	field static int sum
+/*  14:  sum:  integer;  */
+	field static int repReturn
+/*  15:  repReturn: integer;  */
+	field static int c
+/*  16:  c: integer;  */
+	field static int sum2
+/*  17:  sum2: integer;  */
+	field static int index1
+/*  18:  index1: integer;  */
+	field static int index2
+/*  19:  index2: integer;  */
+/*  20:  const5: constant := -10;  */
+/*  21:  const6: constant := 2 + 2;  */
+	field static int n
+/*  22:  n: integer;  */
+/*  23:  */
+	method public static int rep(int ,int)
+	max_stack 15
+	max_locals 15
+	{
+/*  24:procedure rep (arg1: integer; arg2: integer) return integer  */
+/*  25:declare  */
+		sipush 0
+		istore 2
+/*  26:  sum3 : integer := 0;  */
+/*  27:begin    */
+		iload 0
+		iload 1
+		isub
+		ifgt L0
+		iconst_0
+		goto L1
+L0:
+		iconst_1
+L1:
+		ifeq L2
+/*  28:      if(arg1 > arg2) then  */
+		iload 0
+		iload 1
+		isub 
+		istore 2
+/*  29:        sum3 := arg1 - arg2;  */
+		goto L3
+L2:
+/*  30:      else   */
+		iload 1
+		iload 0
+		isub 
+		istore 2
+/*  31:        sum3 := arg2 - arg1;  */
+L3:
+/*  32:      end if;  */
+		iload 2
+		ireturn
+/*  33:    return sum3;  */
+/*  34:end;  */
+		ireturn
+	}
+/*  35:end rep;  */
+/*  36:  */
+/*  37:procedure no_returntype (kk: integer)  */
+	method public static void no_returntype(int)
+	max_stack 15
+	max_locals 15
+	{
+/*  38:    begin  */
+		getstatic java.io.PrintStream java.lang.System.out
+		iload 0
+		invokevirtual void java.io.PrintStream.println(int)
+/*  39:        println kk;  */
+/*  40:    end;  */
+		return
+	}
+/*  41:end no_returntype;  */
+/*  42:  */
+	method public static int testLocalDeclar()
+	max_stack 15
+	max_locals 15
+	{
+/*  43:procedure testLocalDeclar return integer  */
+/*  44:declare  */
+/*  45:  d : integer;  */
+/*  46:  e : integer;  */
+		sipush 17
+		istore 2
+/*  47:  f : integer := 17;  */
+/*  48:  sum : integer;  */
+/*  49:begin  */
+		iload 2
+		sipush 3
+		iadd 
+		istore 0
+/*  50:  d := f + 3;  */
+		sipush 0
+		istore 1
+/*  51:  e := 0;  */
+		sipush 0
+		istore 3
+/*  52:  sum := 0;  */
+L4:
+		iload 1
+		sipush 5
+		isub
+		ifle L5
+		iconst_0
+		goto L6
+L5:
+		iconst_1
+L6:
+		ifeq L7
+/*  53:  while(e <= 5) loop  */
+/*  54:    begin  */
+		iload 3
+		iload 1
+		iadd 
+		istore 3
+/*  55:      sum := sum + e;  */
+		iload 1
+		sipush 1
+		iadd 
+		istore 1
+/*  56:      e := e + 1;  */
+/*  57:    end;  */
+		goto L4
+L7:
+/*  58:  end loop;  */
+		iload 3
+		ireturn
+/*  59:  return sum;  */
+/*  60:end;  */
+		ireturn
+	}
+/*  61:end testLocalDeclar;  */
+/*  62:  */
+	method public static void main(java.lang.String[])
+	max_stack 15
+	max_locals 15
+	{
+/*  63:begin  */
+		sipush 0
+		putstatic int test.a
+/*  64:  a := const1;  */
+		sipush 0
+		putstatic int test.sum
+/*  65:  sum := 0;  */
+		sipush 15
+		putstatic int test.c
+/*  66:  c := 15;  */
+/*  67:  */
+		iconst_1
+		ifeq L8
+/*  68:  if(const3) then  */
+		getstatic java.io.PrintStream java.lang.System.out
+		ldc "test program start"
+		invokevirtual void java.io.PrintStream.println(java.lang.String)
+/*  69:    println const4;  */
+L8:
+/*  70:  end if;  */
+/*  71:  */
+		sipush 1
+		putstatic int test.b
+L10:
+		getstatic int test.b
+		sipush 10
+		isub
+		ifle L11
+		iconst_0
+		goto L12
+L11:
+		iconst_1
+L12:
+		ifeq L13
+/*  72:  for(b in 1..10) loop  */
+/*  73:    begin  */
+		getstatic int test.sum
+		getstatic int test.b
+		iadd 
+		putstatic int test.sum
+/*  74:      sum := sum + b;  */
+/*  75:    end;  */
+		getstatic int test.b
+		sipush 1
+		iadd
+		putstatic int test.b
+		goto L10
+L13:
+/*  76:  end loop;  */
+/*  77:    */
+		getstatic java.io.PrintStream java.lang.System.out
+		ldc "for(1 to 10) sum is "
+		invokevirtual void java.io.PrintStream.print(java.lang.String)
+/*  78:  print "for(1 to 10) sum is ";  */
+		getstatic java.io.PrintStream java.lang.System.out
+		getstatic int test.sum
+		invokevirtual void java.io.PrintStream.println(int)
+/*  79:  println sum;  */
+/*  80:  */
+		getstatic int test.sum
+		sipush 5
+		invokestatic int test.rep(int ,int)
+		putstatic int test.repReturn
+/*  81:  repReturn := rep(sum, const2);  */
+		getstatic java.io.PrintStream java.lang.System.out
+		ldc "check Function :"
+		invokevirtual void java.io.PrintStream.print(java.lang.String)
+/*  82:  print "check Function :";  */
+		getstatic java.io.PrintStream java.lang.System.out
+		getstatic int test.repReturn
+		invokevirtual void java.io.PrintStream.println(int)
+/*  83:  println repReturn;  */
+/*  84:  */
+		getstatic java.io.PrintStream java.lang.System.out
+		ldc "check Procedure"
+		invokevirtual void java.io.PrintStream.print(java.lang.String)
+/*  85:  print ("check Procedure");  */
+		getstatic int test.b
+		invokestatic void test.no_returntype(int)
+/*  86:  no_returntype(b);  */
+/*  87:  */
+		sipush 0
+		putstatic int test.sum2
+/*  88:  sum2 := 0;  */
+L14:
+		getstatic int test.c
+		sipush 0
+		isub
+		ifge L15
+		iconst_0
+		goto L16
+L15:
+		iconst_1
+L16:
+		ifeq L17
+/*  89:  while (c >= 0) loop  */
+/*  90:   declare   */
+		sipush 5
+		istore 0
+/*  91:    s :integer := 5;  */
+/*  92:   begin  */
+		getstatic int test.c
+		sipush 1
+		isub 
+		putstatic int test.c
+/*  93:    c := c - 1;  */
+		getstatic int test.sum2
+		getstatic int test.c
+		iadd 
+		iload 0
+		iadd 
+		putstatic int test.sum2
+/*  94:    sum2 := sum2 + c + s;  */
+/*  95:   end;  */
+		goto L14
+L17:
+/*  96:  end loop;  */
+/*  97:  */
+		getstatic java.io.PrintStream java.lang.System.out
+		ldc "sum2 result: "
+		invokevirtual void java.io.PrintStream.print(java.lang.String)
+/*  98:  print "sum2 result: ";  */
+		getstatic java.io.PrintStream java.lang.System.out
+		getstatic int test.sum2
+		invokevirtual void java.io.PrintStream.println(int)
+/*  99:  println sum2;  */
+/*  100:  */
+		sipush 0
+		putstatic int test.sum
+/*  101:  sum := 0;  */
+		sipush 1
+		putstatic int test.index1
+L18:
+		getstatic int test.index1
+		sipush 10
+		isub
+		ifle L19
+		iconst_0
+		goto L20
+L19:
+		iconst_1
+L20:
+		ifeq L21
+/*  102:  for(index1 in 1..10) loop  */
+/*  103:    begin  */
+		sipush 1
+		putstatic int test.index2
+L22:
+		getstatic int test.index2
+		sipush 10
+		isub
+		ifle L23
+		iconst_0
+		goto L24
+L23:
+		iconst_1
+L24:
+		ifeq L25
+/*  104:      for(index2 in 1..10) loop  */
+/*  105:        begin  */
+		getstatic int test.sum
+		getstatic int test.index1
+		iadd 
+		getstatic int test.index2
+		iadd 
+		putstatic int test.sum
+/*  106:          sum := sum + index1 + index2;  */
+/*  107:        end;  */
+		getstatic int test.index2
+		sipush 1
+		iadd
+		putstatic int test.index2
+		goto L22
+L25:
+/*  108:      end loop;  */
+/*  109:    end;  */
+		getstatic int test.index1
+		sipush 1
+		iadd
+		putstatic int test.index1
+		goto L18
+L21:
+/*  110:  end loop;  */
+/*  111:  */
+		getstatic java.io.PrintStream java.lang.System.out
+		ldc "for loop result:"
+		invokevirtual void java.io.PrintStream.print(java.lang.String)
+/*  112:  print "for loop result:";  */
+		getstatic java.io.PrintStream java.lang.System.out
+		getstatic int test.sum
+		invokevirtual void java.io.PrintStream.println(int)
+/*  113:  println sum;  */
+/*  114:  */
+		sipush 0
+		putstatic int test.sum2
+/*  115:  sum2 := 0;   */
+		sipush -10
+		sipush 2
+		iadd 
+		putstatic int test.sum2
+/*  116:  sum2 := const5 + 2;  */
+		getstatic java.io.PrintStream java.lang.System.out
+		ldc "sum2 value: "
+		invokevirtual void java.io.PrintStream.print(java.lang.String)
+/*  117:  print "sum2 value: ";  */
+		getstatic java.io.PrintStream java.lang.System.out
+		getstatic int test.sum2
+		invokevirtual void java.io.PrintStream.println(int)
+/*  118:  println sum2;  */
+		getstatic java.io.PrintStream java.lang.System.out
+		ldc "const3 value(boolean): "
+		invokevirtual void java.io.PrintStream.print(java.lang.String)
+/*  119:  print "const3 value(boolean): ";  */
+		getstatic java.io.PrintStream java.lang.System.out
+		iconst_1
+		invokevirtual void java.io.PrintStream.println(boolean)
+/*  120:  println const3;  */
+/*  121:  */
+		sipush 10
+		sipush 2
+		iadd 
+		sipush 5
+		imul 
+		putstatic int test.n
+/*  122:  n := (10 + 2) * 5;  */
+		getstatic java.io.PrintStream java.lang.System.out
+		ldc "check expression: "
+		invokevirtual void java.io.PrintStream.print(java.lang.String)
+/*  123:  print "check expression: ";  */
+		getstatic java.io.PrintStream java.lang.System.out
+		getstatic int test.n
+		invokevirtual void java.io.PrintStream.print(int)
+/*  124:  print n;  */
+		getstatic java.io.PrintStream java.lang.System.out
+		ldc ", "
+		invokevirtual void java.io.PrintStream.print(java.lang.String)
+/*  125:  print ", ";  */
+		getstatic java.io.PrintStream java.lang.System.out
+		sipush 4
+		invokevirtual void java.io.PrintStream.println(int)
+/*  126:  println const6;  */
+/*  127:  */
+/*  128:    */
+		getstatic java.io.PrintStream java.lang.System.out
+		ldc "check multiple boolean expression: "
+		invokevirtual void java.io.PrintStream.print(java.lang.String)
+/*  129:  print "check multiple boolean expression: ";  */
+		getstatic int test.n
+		sipush 0
+		isub
+		ifge L26
+		iconst_0
+		goto L27
+L26:
+		iconst_1
+L27:
+		getstatic int test.sum2
+		sipush 10
+		isub
+		ifle L28
+		iconst_0
+		goto L29
+L28:
+		iconst_1
+L29:
+		iand 
+		ifeq L30
+/*  130:  if(n >= 0 AND sum2 <= 10) then  */
+		getstatic java.io.PrintStream java.lang.System.out
+		getstatic int test.n
+		getstatic int test.sum2
+		iadd 
+		invokevirtual void java.io.PrintStream.println(int)
+/*  131:    println n + sum2;  */
+		goto L31
+L30:
+/*  132:  else  */
+		getstatic java.io.PrintStream java.lang.System.out
+		getstatic int test.n
+		getstatic int test.sum2
+		isub 
+		invokevirtual void java.io.PrintStream.println(int)
+/*  133:    println n - sum2;  */
+L31:
+/*  134:  end if;  */
+/*  135:  */
+		getstatic java.io.PrintStream java.lang.System.out
+		ldc "check local declaration and print function: "
+		invokevirtual void java.io.PrintStream.print(java.lang.String)
+/*  136:  print "check local declaration and print function: ";  */
+		getstatic java.io.PrintStream java.lang.System.out
+		invokestatic int test.testLocalDeclar()
+		invokevirtual void java.io.PrintStream.println(int)
+/*  137:  println testLocalDeclar();  */
+/*  138:  */
+/*  139:  */
+/*  140:  {if(n=10) then  */
+/*  141:   println n;  */
+/*  142:  else  */
+/*  143:    println a;  */
+/*  144:  end if;}  */
+/*  145: end;  */
+		return
+	}
+}
